@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Page d'accueil protégée</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box" id="login">
+    <h2>🔒 Accès sécurisé</h2>
+    <input type="password" id="password" placeholder="Mot de passe">
+    <button onclick="verifier()">Entrer</button>
+    <div class="error" id="error"></div>
+</div>
+
+<div class="box" id="home" style="display: none;">
+    <h2>🎉 Bienvenue !</h2>
+    <p>Tu as accès à la page d'accueil.</p>
+</div>
+
+<script>
+    const MOT_DE_PASSE = "bonjour";
+
+    function verifier() {
+        const saisie = document.getElementById("password").value;
+        const erreur = document.getElementById("error");
+
+        if (saisie === MOT_DE_PASSE) {
+            document.getElementById("login").style.display = "none";
+            document.getElementById("home").style.display = "block";
+        } else {
+            erreur.textContent = "Mot de passe incorrect ❌";
+        }
+    }
+</script>
+
+</body>
+</html>
